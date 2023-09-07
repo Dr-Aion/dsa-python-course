@@ -8,6 +8,11 @@ print(my_array)
 my_array1 = arr.array('i', [1, 2, 4]) #typecode: i - signed integer
 print(my_array1)
 
+def traverseArray(array):
+    for i in array:
+        print(i)
+traverseArray(my_array1)
+
 import numpy as np
 #Time Complexity: O(1)
 #Space Complexity: O(1)
