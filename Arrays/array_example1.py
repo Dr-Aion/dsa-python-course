@@ -13,6 +13,8 @@ def traverseArray(array):
         print(i)
 traverseArray(my_array1)
 
+my_array1.insert(0, 6)
+print(my_array1)
 import numpy as np
 #Time Complexity: O(1)
 #Space Complexity: O(1)
