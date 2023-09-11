@@ -53,3 +53,5 @@ arr.reverse()
 print(arr)
 
 #11. Get array buffer information
+print("Task11 Get array buffer information")
+print(arr.buffer_info)
