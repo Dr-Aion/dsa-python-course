@@ -1,14 +1,27 @@
 class Node:
-    def _init_(self, value):
+    def __init__(self, value):
         self.value = value;
         self.next = None;
 
-class LinkedList:
-    def _init_(self, value):
-        new_node = Node(value)
-        self.head = new_node
-        self.tail = new_node
-        self.length = 1
+new_node = Node(10)
+print(new_node.value)
 
-new_linked_list = LinkedList(10)
-print(new_linked_list.lenght)
+# class LinkedList:
+#     def __init__(self, value):
+#         new_node = Node(value)
+#         self.head = new_node
+#         self.tail = new_node
+#         self.length = 1
+
+#empty LinkedList
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
+
+newLinkedList = LinkedList()
+print(newLinkedList.length)
+
+
+    
