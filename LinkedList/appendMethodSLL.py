@@ -35,12 +35,22 @@ class LinkedList:
             self.tail.next = new_node
             self.tail = new_node
         self.length += 1
+    def insert(self, index, value):
+        new_node = Node(value)
+        temp_node = self.head
+        for _ in range(index - 1):
+            temp_node = temp_node.next
+        new_node.next = temp_node
+        temp_node.next = new_node
+        self.length += 1
     
 new_LinkedList = LinkedList()
 new_LinkedList.append(10)
 new_LinkedList.append(20)
 new_LinkedList.append(40)
 new_LinkedList.prepend(5)
+new_LinkedList.insert(1, 50)
+
 print(new_LinkedList.head.value)
 print(new_LinkedList.tail.value)
 print(new_LinkedList.length)
