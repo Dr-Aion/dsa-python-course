@@ -37,7 +37,9 @@ class LinkedList:
         self.length += 1
     def insert(self, index, value):
         new_node = Node(value)
-        if self.length == 0:
+        if index < 0 and index > self.length:
+            return False
+        elif self.length == 0:
             self.head = new_node
             self.tail = new_node
         elif index == 0:
@@ -47,21 +49,31 @@ class LinkedList:
             temp_node = self.head
             for _ in range(index - 1):
                 temp_node = temp_node.next
-            new_node.next = temp_node
+            new_node.next = temp_node.next
             temp_node.next = new_node
         self.length += 1
+        return True
     def traverse(self):
         current = self.head
         while current:
             print(current.value)
             current = current.next
+    def search(self, target):
+        current = self.head
+        while current:
+            if current.value == target:
+                return True
+            current = current.next
+        return False
     
 new_LinkedList = LinkedList()
 new_LinkedList.append(10)
 new_LinkedList.append(20)
 new_LinkedList.append(40)
 new_LinkedList.prepend(5)
-# new_LinkedList.insert(1, 50)
+new_LinkedList.insert(1, 50)
+new_LinkedList.insert(-2, 35)
+print(new_LinkedList.search(40))
 
 # print(new_LinkedList.head.value)
 # print(new_LinkedList.tail.value)
