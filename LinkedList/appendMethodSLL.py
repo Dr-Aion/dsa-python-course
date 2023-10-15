@@ -60,12 +60,29 @@ class LinkedList:
             current = current.next
     def search(self, target):
         current = self.head
+        index = 0
         while current:
             if current.value == target:
-                return True
+                return True, index
             current = current.next
+            index = index + 1
         return False
-    
+    def get(self, index):
+        if index == -1:
+            return self.tail
+        if index < -1 or index >= self.length:
+            return None
+        current = self.head
+        for _ in range(index):
+            current = current.next
+        return current
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp is not None:
+            temp.value = value
+            return True
+        return False
+ 
 new_LinkedList = LinkedList()
 new_LinkedList.append(10)
 new_LinkedList.append(20)
@@ -74,6 +91,10 @@ new_LinkedList.prepend(5)
 new_LinkedList.insert(1, 50)
 new_LinkedList.insert(-2, 35)
 print(new_LinkedList.search(40))
+print(new_LinkedList.get(6))
+print(new_LinkedList.set_value(1, 100))
+
+
 
 # print(new_LinkedList.head.value)
 # print(new_LinkedList.tail.value)
