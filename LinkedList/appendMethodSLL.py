@@ -82,6 +82,52 @@ class LinkedList:
             temp.value = value
             return True
         return False
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        popped_node = self.head
+        if self.length == 1:
+            self.tail = None
+            self.tail = None
+            return popped_node
+        else:
+            self.head = self.head.next
+            popped_node.next = None
+        self.length -= 1
+        return popped_node.value
+    def pop(self):
+        if self.length == 0:
+            return None
+        popped_last = self.tail
+        if self.length == 1:
+            self.tail = None
+            self.tail = None
+            return popped_last
+        else:
+            temp = self.head
+            while temp.next is not self.tail:
+                temp = temp.next
+            self.tail = temp
+            temp.next = None
+        self.length -= 1
+        return popped_last.value
+    def remove(self, index):
+        if index < -1 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1 or index == -1:
+            return self.pop()
+        prev = self.get(index - 1)
+        popped_node = prev.next
+        prev.next = popped_node.next
+        popped_node.next = None
+        self.length -= 1
+        return popped_node
+    def delete_all(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
  
 new_LinkedList = LinkedList()
 new_LinkedList.append(10)
@@ -93,6 +139,17 @@ new_LinkedList.insert(-2, 35)
 print(new_LinkedList.search(40))
 print(new_LinkedList.get(6))
 print(new_LinkedList.set_value(1, 100))
+print(new_LinkedList)
+print(new_LinkedList.pop_first())
+print(new_LinkedList)
+print(new_LinkedList.pop())
+print(new_LinkedList)
+print(new_LinkedList.remove(2))
+print(new_LinkedList)
+
+
+
+
 
 
 
@@ -100,5 +157,5 @@ print(new_LinkedList.set_value(1, 100))
 # print(new_LinkedList.tail.value)
 # print(new_LinkedList.length)
 # print(new_LinkedList)
-new_LinkedList.traverse()
+# new_LinkedList.traverse()
 
