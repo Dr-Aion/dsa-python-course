@@ -103,7 +103,15 @@ class CSLinkedList:
         current = self.head
         for _ in range(index):
             current = current.next
-        return current.value
+        return current
+
+    def set(self, index, value):
+        temp_node = self.get(index)
+        if temp_node:
+            temp_node.value = value
+            return True
+        return False
+
 
             
 
@@ -124,4 +132,8 @@ print(csLinkedList)
 # csLinkedList.traverse()
 # print(csLinkedList.search(77))
 print(csLinkedList.get(-1))
+print(csLinkedList.set(2, 17))
+print(csLinkedList)
+
+
 
