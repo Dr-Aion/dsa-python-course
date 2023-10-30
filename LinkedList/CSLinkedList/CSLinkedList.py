@@ -111,6 +111,17 @@ class CSLinkedList:
             temp_node.value = value
             return True
         return False
+    
+    def pop_first(self):
+        popped_node = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        self.head = self.head.next
+        self.tail.next = self.head
+        popped_node.next = None
+        self.length -= 1
+        return popped_node
 
 
             
@@ -134,6 +145,9 @@ print(csLinkedList)
 print(csLinkedList.get(-1))
 print(csLinkedList.set(2, 17))
 print(csLinkedList)
+print(csLinkedList.pop_first())
+print(csLinkedList)
+
 
 
 
