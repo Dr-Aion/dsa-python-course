@@ -60,15 +60,15 @@ class CSLinkedList:
             if self.head is None:
                 self.head = new_node
                 self.tail = new_node
-                new_node.next = new_node
+                self.tail.next = self.head
             else:
                 new_node.next = self.head
                 self.head = new_node
-                self.tail.next = new_node
+                self.tail.next = self.head
         elif index == self.length:
             self.tail.next = new_node
             new_node.next = self.head
-            self.tail = self.head
+            self.tail = new_node
         else:
             temp_node = self.head
             for _ in range(index - 1):
@@ -114,10 +114,23 @@ class CSLinkedList:
     
     def pop_first(self):
         popped_node = self.head
+        if self.length == 0:
+            return None
         if self.length == 1:
             self.head = None
             self.tail = None
+            return popped_node
         self.head = self.head.next
+        self.tail.next = self.head
+        popped_node.next = None
+        self.length -= 1
+        return popped_node
+    def pop(self):
+        popped_node = self.tail
+        temp = self.head
+        while temp.next is not self.tail:
+            temp = temp.next
+        self.tail = temp
         self.tail.next = self.head
         popped_node.next = None
         self.length -= 1
@@ -132,20 +145,22 @@ csLinkedList.append(5)
 csLinkedList.append(20)
 csLinkedList.append(30)
 csLinkedList.prepend(50)
-csLinkedList.prepend(1)
+csLinkedList.prepend(55)
 csLinkedList.insert(1, 8)
 # csLinkedList.insert(0, 11)
 csLinkedList.insert(7, 12)
 # print(csLinkedList.tail.value)
-
-print(csLinkedList)
+# print(csLinkedList)
 # csLinkedList.insert(11, 12)
 # csLinkedList.traverse()
 # print(csLinkedList.search(77))
 print(csLinkedList.get(-1))
 print(csLinkedList.set(2, 17))
+# print(csLinkedList)
 print(csLinkedList)
 print(csLinkedList.pop_first())
+print(csLinkedList)
+print(csLinkedList.pop())
 print(csLinkedList)
 
 
