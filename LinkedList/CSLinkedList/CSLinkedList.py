@@ -135,6 +135,14 @@ class CSLinkedList:
         popped_node.next = None
         self.length -= 1
         return popped_node
+    
+    def remove(self, index):
+        prev_node = self.get(index-1)
+        popped_node = prev_node.next
+        prev_node.next = popped_node.next
+        popped_node.next = None
+        self.length -= 1
+        return popped_node
 
 
             
@@ -162,6 +170,10 @@ print(csLinkedList.pop_first())
 print(csLinkedList)
 print(csLinkedList.pop())
 print(csLinkedList)
+print(csLinkedList.remove(2))
+print(csLinkedList)
+
+
 
 
 
