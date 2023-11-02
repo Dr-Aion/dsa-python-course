@@ -127,14 +127,21 @@ class CSLinkedList:
         return popped_node
     def pop(self):
         popped_node = self.tail
-        temp = self.head
-        while temp.next is not self.tail:
-            temp = temp.next
-        self.tail = temp
-        self.tail.next = self.head
-        popped_node.next = None
-        self.length -= 1
-        return popped_node
+        if self.length == 0:
+            return None
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+            return popped_node
+        else:
+            temp = self.head
+            while temp.next is not self.tail:
+                temp = temp.next
+            self.tail = temp
+            self.tail.next = self.head
+            popped_node.next = None
+            self.length -= 1
+            return popped_node
     
     def remove(self, index):
         prev_node = self.get(index-1)
