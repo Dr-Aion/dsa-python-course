@@ -151,6 +151,11 @@ class CSLinkedList:
         self.length -= 1
         return popped_node
 
+    def delete_all(self):
+        self.tail.next = None
+        self.head = None
+        self.tail = None
+        self.length = 0
 
             
 
