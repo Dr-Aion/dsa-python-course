@@ -77,6 +77,18 @@ class CircularDoublyLinkedList:
             new_node.next = temp_node.next
             new_node.next.prev = new_node
             temp_node.next = new_node
+            self.length += 1
+    
+    def traverse(self):
+        if self.head is None:
+            return None
+        else:
+            temp_node = self.head
+            while temp_node:
+                print(temp_node.value)
+                if temp_node is self.tail:
+                    break
+                temp_node = temp_node.next
         
 
 circularDoublyLinkedList = CircularDoublyLinkedList()
@@ -86,10 +98,7 @@ circularDoublyLinkedList.prepend(20)
 circularDoublyLinkedList.append(11)
 circularDoublyLinkedList.append(12)
 circularDoublyLinkedList.insert(1, 30)
-
-
-
 print([node.value for node in circularDoublyLinkedList])
 print(circularDoublyLinkedList)
-print(circularDoublyLinkedList.head.prev.value)
+circularDoublyLinkedList.traverse()
 
