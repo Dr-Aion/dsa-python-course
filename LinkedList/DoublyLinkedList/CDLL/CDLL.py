@@ -101,6 +101,19 @@ class CircularDoublyLinkedList:
                 if temp_node is self.head:
                     break
                 temp_node = temp_node.prev
+
+    def search(self, search_value):
+        if self.head is None:
+            return None
+        else:
+            temp_node = self.head
+            while temp_node:
+                if temp_node.value == search_value:
+                    return True
+                temp_node = temp_node.next
+                if temp_node == self.tail:
+                    break
+            return False
         
 
 circularDoublyLinkedList = CircularDoublyLinkedList()
@@ -113,3 +126,4 @@ circularDoublyLinkedList.insert(1, 30)
 print([node.value for node in circularDoublyLinkedList])
 print(circularDoublyLinkedList)
 circularDoublyLinkedList.reverse_traverse()
+print(circularDoublyLinkedList.search(9))
