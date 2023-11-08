@@ -114,7 +114,22 @@ class CircularDoublyLinkedList:
                 if temp_node == self.tail:
                     break
             return False
-        
+    
+    def delete(self, index):
+        if self.head is None:
+            return None
+        if index == 0:
+            if self.head is self.tail:
+                self.head.next = None
+                self.head.prev = None
+                self.head = None
+                self.tail = None
+            else:
+                deleted_node = self.head
+                self.tail.next = self.head.next
+                self.head.next.prev = self.tail
+
+
 
 circularDoublyLinkedList = CircularDoublyLinkedList()
 circularDoublyLinkedList.prepend(5)
