@@ -118,16 +118,55 @@ class CircularDoublyLinkedList:
     def delete(self, index):
         if self.head is None:
             return None
-        if index == 0:
+        elif index == 0:
+            deleted_node = self.head
             if self.head is self.tail:
                 self.head.next = None
                 self.head.prev = None
                 self.head = None
                 self.tail = None
             else:
-                deleted_node = self.head
-                self.tail.next = self.head.next
-                self.head.next.prev = self.tail
+                self.head = self.head.next
+                self.tail.next = self.head
+                self.head.prev = self.tail
+            self.length -= 1
+            return deleted_node.value
+        elif index == -1 or index == self.length - 1:
+            deleted_node = self.tail
+            if self.head is self.tail:
+                self.head.next = None
+                self.head.prev = None
+                self.head = None
+                self.tail = None
+            else:
+                self.tail = self.tail.prev
+                self.tail.next = self.head
+                self.head.prev = self.tail
+            self.length -= 1
+            return deleted_node.value
+        else:
+            temp_node = self.head
+            for _ in range(index - 1):
+                temp_node = temp_node.next
+            deleted_node = temp_node.next
+            temp_node.next = temp_node.next.next
+            temp_node.next.prev = temp_node
+            self.length -= 1
+            return deleted_node.value
+
+    def delete_all(self):
+        if self.head is None:
+            return None
+        else:
+            self.tail.next = None
+            temp_node = self.head
+            while temp_node:
+                temp_node.prev = None
+                temp_node = temp_node.next
+            self.head = None
+            self.tail = None
+        
+            
 
 
 
@@ -142,3 +181,6 @@ print([node.value for node in circularDoublyLinkedList])
 print(circularDoublyLinkedList)
 circularDoublyLinkedList.reverse_traverse()
 print(circularDoublyLinkedList.search(9))
+print(circularDoublyLinkedList.delete(3))
+print(circularDoublyLinkedList.delete_all())
+print([node.value for node in circularDoublyLinkedList])
