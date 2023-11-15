@@ -63,8 +63,26 @@ class LinkedList:
  
         ll.tail = prev_node  
         return ll.head
+    def nthToLast(ll, n):
+        pointer1 = ll.head
+        pointer2 = ll.head
+
+        for i in range(n):
+            if pointer2 is None:
+                return None
+            pointer2 = pointer2.next
+
+        while pointer2:
+            pointer1 = pointer1.next
+            pointer2 = pointer2.next
+        return pointer1
     
 customLinkedList = LinkedList()
 customLinkedList.generate(5, 1, 10)
 print(customLinkedList)
 print(len(customLinkedList))
+
+customLL = LinkedList()
+customLL.generate(10, 0, 99)
+print(customLL)
+print(nthToLast(customLL, 3))
