@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import csv
 
 students = [] 
@@ -22,3 +23,13 @@ def get_house(student):
 
 for student in sorted(students, key=get_house, reverse=True):
     print(f"{student['name']} is in {student['house']}")
+=======
+students = [] 
+with open("students.csv") as file:
+    for line in file:
+        name, house = line.rstrip().split(",")
+        students.append(f"{name} is in {house}")
+
+for student in sorted(students):
+    print student
+>>>>>>> eb1692f8c2dcb8f9674a1709db9c6ff558a3f022
