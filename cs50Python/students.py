@@ -14,10 +14,15 @@ with open("students.csv") as file:
     #     print(student)
     #     students.append(student)
 
-    # approach 2 using csv library
-    reader = csv.reader(file)
-    for name, house in reader:
-        students.append({"name": name, "house": house})        
+    # approach 2 using csv library reader() method
+    # reader = csv.reader(file)
+    # for name, house in reader:
+    #     students.append({"name": name, "house": house})     
+
+    #approach 3 using csv library DictReader() method
+    reader = csv.DictReader(file)
+    for row in reader:
+        students.append({"name": row["name"], "house": row["house"]})   
 
 # def get_name(student):
 #     return student['name']
