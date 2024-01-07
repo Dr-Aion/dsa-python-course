@@ -7,6 +7,11 @@ class Student:
     def __str__(self):
         return f"{self._name} is from {self._house}"
     
+    # house is a property of our class, 
+    # with functions via which a user attempts to set our class attribute. 
+    # _house is that class attribute itself. 
+    # The leading underscore, _, indicates to users they need not (and indeed, shouldn’t!) 
+    # modify this value directly. _house should only be set through the house setter. 
     @property
     def name(self):
         return self._name
