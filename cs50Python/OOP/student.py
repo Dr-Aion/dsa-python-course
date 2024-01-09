@@ -31,16 +31,17 @@ class Student:
         if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
             raise ValueError("Invalid house")
         self._house = house
+    @classmethod
+    def get(cls):
+        name = input("Name: ").strip()
+        house = input("House: ").strip()
+        return cls(name, house)
 
 def main():
     # get_student() returns a tuple
-    student = get_student() 
+    student = Student.get() 
     print(student)
 
-def get_student():
-    name = input("Name: ").strip()
-    house = input("House: ").strip()
-    return Student(name, house)
 
 if __name__ == "__main__":
     main()
