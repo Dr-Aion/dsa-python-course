@@ -22,7 +22,10 @@
 #     print(gryffindor["name"])
 
 # 3. dictionary comprehension example
-
 students = ["Harry", "Hermione", "Ron"]
-gryffindors = {student: "Gryffindor" for student in students}
-print(gryffindors)
+# gryffindors = {student: "Gryffindor" for student in students}
+# print(gryffindors)
+
+# 4. enumerate(iterable, start = 0)
+for i, student in enumerate(students):
+    print(i + 1, student)
