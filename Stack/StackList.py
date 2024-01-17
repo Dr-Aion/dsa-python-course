@@ -3,44 +3,42 @@ class Stack:
         self.list = []
     
     def __str__(self):
-        values = self.list.reverse()
+        # values = self.list.reverse()
         values = [str(x) for x in self.list]
-        return '\n'.join(values)
+        values.reverse()
+        return "\n".join(values)
     
-    # isEmpty
     def isEmpty(self):
-        if self.list == []:
+        if not self.list:
             return True
         else:
             return False
-    # push
+    
     def push(self, value):
         self.list.append(value)
-        return "The element has been successfully inserted"
-
-    # pop
+        return "the value was pushed"
+    
     def pop(self):
         if self.isEmpty():
-            return "There is not any element in the stack"
+            return "There are no elements in a Stack"
         else:
             return self.list.pop()
-    
-    # peek
+        
     def peek(self):
         if self.isEmpty():
-            return "There is not any element in the stack"
+            return "There are no elements in a Stack"
         else:
             return self.list[len(self.list)-1]
-    
-    # delete
+        
     def delete(self):
         self.list = None
-
-
-
+    
 customStack = Stack()
+print(customStack.isEmpty())
 customStack.push(1)
-customStack.push(2)
+customStack.push(11)
 customStack.push(3)
+customStack.pop()
+customStack.pop()
+customStack.delete()
 print(customStack.peek())
-print(customStack)
