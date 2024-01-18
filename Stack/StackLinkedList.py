@@ -6,21 +6,24 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
-    
+
     def __iter__(self):
-        curNode = self.head
-        while curNode:
-            yield curNode
-            curNode = curNode.next
+        current_node = self.head
+        while(current_node):
+            yield current_node
+            current_node = current_node.next
 
 class Stack:
     def __init__(self):
         self.LinkedList = LinkedList()
     
     def __str__(self):
-        values = [str(x.value) for x in self.LinkedList]
-        return '\n'.join(values)
-    
+        if self.isEmpty():
+            return "The Stack is empty"
+        else:
+            values = [str(x.value) for x in self.LinkedList]
+            return '\n'.join(values)
+        
     def isEmpty(self):
         if self.LinkedList.head == None:
             return True
@@ -28,33 +31,38 @@ class Stack:
             return False
 
     def push(self, value):
-        node = Node(value)
-        node.next = self.LinkedList.head
-        self.LinkedList.head = node
+        if self.isEmpty():
+            new_node = Node(value)
+            self.LinkedList.head = new_node
+        else:
+            new_node = Node(value)
+            new_node.next = self.LinkedList.head
+            self.LinkedList.head = new_node
     
     def pop(self):
         if self.isEmpty():
-            return "There is not any element in the stack"
+            return "The Stack is empty"
         else:
-            nodeValue = self.LinkedList.head.value
+            node_value = self.LinkedList.head.value
             self.LinkedList.head = self.LinkedList.head.next
-            return nodeValue
-    
+            return node_value
+        
     def peek(self):
         if self.isEmpty():
-            return "There is not any element in the stack"
+            return "The Stack is empty"
         else:
-            nodeValue = self.LinkedList.head.value
-            return nodeValue
-    
+            return self.LinkedList.head.value
+        
     def delete(self):
         self.LinkedList.head = None
-    
-
 
 customStack = Stack()
-customStack.push(1)
-customStack.push(2)
-customStack.push(3)
-
-print(customStack.peek())
+print(customStack.isEmpty())
+customStack.push(23)
+customStack.push(44)
+customStack.push(51)
+print(customStack)
+print("_________")
+customStack.pop()
+print("peek " + str(customStack.peek()))
+print(customStack)
