@@ -2,61 +2,62 @@ class Stack:
     def __init__(self, maxSize):
         self.maxSize = maxSize
         self.list = []
-    
+
     def __str__(self):
-        values = self.list.reverse()
         values = [str(x) for x in self.list]
+        values.reverse()
         return '\n'.join(values)
     
-    # isEmpty
     def isEmpty(self):
-        if self.list == []:
+        if not self:
             return True
         else:
             return False
-    
-    # isFull
+        
     def isFull(self):
-        if len(self.list) == self.maxSize:
-            return True
+        if self.isEmpty():
+            return "The Stack is empty"
         else:
-            return False
-    
-    #  Push
+            if(len(self.list) == self.maxSize):
+                return True
+            else:
+                return False
+
     def push(self, value):
         if self.isFull():
-            return "The stack is full"
+            return "The Stack is full"
         else:
             self.list.append(value)
-            return "The element has been successfully inserted"
-    # Pop
+            return "The element is pushed"
+    
     def pop(self):
         if self.isEmpty():
-            return "There is not any element in the stack"
+            return "The Stack is empty"
         else:
             return self.list.pop()
     
-    # peek
     def peek(self):
         if self.isEmpty():
-            return "There is not any element in the stack"
+            return "The Stack is empty"
         else:
-            return self.list[len(self.list)-1]
-
-    #  delete
+            return self.list[len(self.list) - 1]
+    
     def delete(self):
         self.list = None
-    
 
-customStack = Stack(4)
-print(customStack.isEmpty())
-print(customStack.isFull())
-customStack.push(1)
-customStack.push(2)
-customStack.push(3)
-customStack.push(4)
-customStack.push(5)
-
+customStack = Stack(5)
+customStack.push(45)
+customStack.push(55)
+customStack.push(22)
+customStack.push(11)
+customStack.push(33)
+customStack.push(73)
 print(customStack)
+print(customStack.isFull())
+print(customStack)
+print("pop " + str(customStack.pop()))
+print("peek " + str(customStack.peek()))
 
-    
+
+
+
