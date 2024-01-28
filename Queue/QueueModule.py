@@ -1,10 +1,11 @@
-import queue as q
+from collections import deque
 
-customQueue = q.Queue(maxsize=3)
-print(customQueue.empty())
-customQueue.put(1)
-customQueue.put(2)
-customQueue.put(3)
-print(customQueue.full())
-print(customQueue.get())
-print(customQueue.qsize())
+customQueue = deque(maxlen = 3)
+customQueue.append(5)
+customQueue.append(11)
+customQueue.append(50)
+customQueue.append(45)
+print(customQueue.popleft())
+print(customQueue)
+customQueue.clear()
+print(customQueue)
