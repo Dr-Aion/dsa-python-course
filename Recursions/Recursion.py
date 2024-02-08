@@ -84,3 +84,11 @@ def fibonacci(n):
         return fibonacci(n-1) + fibonacci(n-2)
 
 print(fibonacci(7))
+
+A = [11, 4, 12, 7]
+
+def findMaxNumRec(sampleArray, n):
+    if n == 1: return sampleArray[0]
+    return max(sampleArray[n-1], findMaxNumRec(sampleArray, n-1))
+
+findMaxNumRec(A, 4)
