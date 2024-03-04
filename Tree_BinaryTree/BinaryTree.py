@@ -147,3 +147,11 @@ def deleteNodeBT(rootNode, node):
             if (root.value.rightChild is not None):
                 customQueue.enqueue(root.value.rightChild)
         return "Failed to delete"
+
+def deleteBT(rootNode):
+    rootNode.data = None
+    rootNode.leftChild = None
+    rootNode.rightChild = None
+    return "The BT has been successfully deleted" 
+
+inOrderTraversal(newBT)
