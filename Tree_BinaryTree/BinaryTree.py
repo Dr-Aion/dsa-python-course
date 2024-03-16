@@ -6,14 +6,14 @@ class TreeNode:
         self.leftChild = None
         self.rightChild = None
 
-newBT = TreeNode("Drinks")
-leftChild = TreeNode("Hot")
-tea = TreeNode("Tea")
-coffee = TreeNode("Coffee")
-leftChild.leftChild = tea
-leftChild.rightChild = coffee
-rightChild = TreeNode("Cold")
+newBT = TreeNode('Drinks')
+leftChild = TreeNode('Hot')
+rightChild = TreeNode('Cold')
 newBT.leftChild = leftChild
+tea = TreeNode('Tea')
+coffee = TreeNode('Coffee')
+leftChild.leftChild = tea
+leftChild.rightChild = coffee 
 newBT.rightChild = rightChild
 
 def preOrderTraversal(rootNode):
@@ -22,13 +22,15 @@ def preOrderTraversal(rootNode):
     print(rootNode.data)
     preOrderTraversal(rootNode.leftChild)
     preOrderTraversal(rootNode.rightChild)
+# preOrderTraversal(newBT)
 
-def inOrderTraversal(rootNode):
+def inOrderTravelsal(rootNode):
     if not rootNode:
         return
-    inOrderTraversal(rootNode.leftChild)
+    inOrderTravelsal(rootNode.leftChild)
     print(rootNode.data)
-    inOrderTraversal(rootNode.rightChild)
+    inOrderTravelsal(rootNode.rightChild)
+# inOrderTravelsal(newBT)
 
 def postOrderTraversal(rootNode):
     if not rootNode:
@@ -36,6 +38,7 @@ def postOrderTraversal(rootNode):
     postOrderTraversal(rootNode.leftChild)
     postOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
+# postOrderTraversal(newBT)
 
 def levelOrderTraversal(rootNode):
     if not rootNode:
@@ -43,115 +46,28 @@ def levelOrderTraversal(rootNode):
     else:
         customQueue = queue.Queue()
         customQueue.enqueue(rootNode)
-        while not(customQueue.isEmpty()):
+        while not customQueue.isEmpty():
             root = customQueue.dequeue()
             print(root.value.data)
-            if (root.value.leftChild is not None):
+            if root.value.leftChild:
                 customQueue.enqueue(root.value.leftChild)
-            
-            if (root.value.rightChild is not None):
+            if root.value.rightChild:
                 customQueue.enqueue(root.value.rightChild)
-
-def searchBT(rootNode, nodeValue):
+# levelOrderTraversal(newBT)
+                
+def searchBinaryTree(rootNode, nodeValue):
     if not rootNode:
-        return "The BT does not exist"
+        return
     else:
         customQueue = queue.Queue()
         customQueue.enqueue(rootNode)
-        while not(customQueue.isEmpty()):
+        while not customQueue.isEmpty():
             root = customQueue.dequeue()
             if root.value.data == nodeValue:
-                return "Success"
-            if (root.value.leftChild is not None):
-                customQueue.enqueue(root.value.leftChild)
-            
-            if (root.value.rightChild is not None):
-                customQueue.enqueue(root.value.rightChild)
-        return "Not found"
-
-def insertNodeBT(rootNode, newNode):
-    if not rootNode:
-        rootNode = newNode
-    else:
-        customQueue = queue.Queue()
-        customQueue.enqueue(rootNode)
-        while not(customQueue.isEmpty()):
-            root = customQueue.dequeue()
-            if root.value.leftChild is not None:
-                customQueue.enqueue(root.value.leftChild)
-            else:
-                root.value.leftChild = newNode
-                return "Successfully Inserted"
-            if root.value.rightChild is not None:
-                customQueue.enqueue(root.value.rightChild)
-            else:
-                root.value.rightChild = newNode
-                return "Successfully Inserted"
-        
-def getDeepestNode(rootNode):
-    if not rootNode:
-        return
-    else:
-        customQueue = queue.Queue()
-        customQueue.enqueue(rootNode)
-        while not(customQueue.isEmpty()):
-            root = customQueue.dequeue()
-            if (root.value.leftChild is not None):
-                customQueue.enqueue(root.value.leftChild)
-            
-            if (root.value.rightChild is not None):
-                customQueue.enqueue(root.value.rightChild)
-        deepestNode = root.value
-        return deepestNode
-    
-def deleteDeepestNode(rootNode, dNode):
-    if not rootNode:
-        return
-    else:
-        customQueue = queue.Queue()
-        customQueue.enqueue(rootNode)
-        while not(customQueue.isEmpty()):
-            root = customQueue.dequeue()
-            if root.value is dNode:
-                root.value = None
-                return
-            if root.value.rightChild:
-                if root.value.rightChild is dNode:
-                    root.value.rightChild = None
-                    return
-                else:
-                    customQueue.enqueue(root.value.rightChild)
+                return "the node exists"
             if root.value.leftChild:
-                if root.value.leftChild is dNode:
-                    root.value.leftChild = None
-                    return
-                else:
-                    customQueue.enqueue(root.value.leftChild)
-
-def deleteNodeBT(rootNode, node):
-    if not rootNode:
-        return "The BT does not exist"
-    else:
-        customQueue = queue.Queue()
-        customQueue.enqueue(rootNode)
-        while not(customQueue.isEmpty()):
-            root = customQueue.dequeue()
-            if root.value.data == node:
-                dNode = getDeepestNode(rootNode)
-                root.value.data = dNode.data
-                deleteDeepestNode(rootNode, dNode)
-                return "The node has been successfully deleted"
-            if (root.value.leftChild is not None):
                 customQueue.enqueue(root.value.leftChild)
-            
-            if (root.value.rightChild is not None):
-                customQueue.enqueue(root.value.rightChild)
-        return "Failed to delete"
-
-def deleteBT(rootNode):
-    rootNode.data = None
-    rootNode.leftChild = None
-    rootNode.rightChild = None
-    return "The BT has been successfully deleted" 
-
-inOrderTraversal(newBT)
+            if root.value.leftChild:
+                customQueue.enqueue(root.value.leftChild)    
+        return "the node doesn't exist"
+print(searchBinaryTree(newBT, "Caramel"))
