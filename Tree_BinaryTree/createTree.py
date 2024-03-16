@@ -3,8 +3,8 @@ class TreeNode:
         self.data = data
         self.children = children
     
-    def __str__(self, level=0):
-        ret = "  " * level + str(self.data)  + "\n"
+    def __str__(self, level = 0):
+        ret = " " * level + str(self.data) + "\n"
         for child in self.children:
             ret += child.__str__(level + 1)
         return ret
@@ -21,8 +21,8 @@ tea = TreeNode('Tea', [])
 coffee = TreeNode('Coffee', [])
 cola = TreeNode('Cola', [])
 fanta = TreeNode('Fanta', [])
-cold.addChild(cola)
-cold.addChild(fanta)
 hot.addChild(tea)
 hot.addChild(coffee)
+cold.addChild(cola)
+cold.addChild(fanta)
 print(tree)
